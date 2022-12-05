@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table id="trabalhadoresTable">
+    <thead>
+        <tr>
+
+
+        <th>Name </th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+</table>
+
+<link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#trabalhadoresTable').DataTable({
+                "ajax": {
+                    "url": "Trabalhadores/GetList",
+                    "type": "json",
+                       "type":"GET" 
+                },
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "Position" },
+                    { "data": "Age" },
+                    { "data": "Salary" }
+                ]
+
+            })
+        });
+
+    </script>
+    }
